@@ -17,7 +17,7 @@ function check_jailed {
 }
 
 function unjail_validator {
-  echo "unjail işlemi başlatılıyor..."
+  echo "unjail..."
   rapidd tx slashing unjail --broadcast-mode=block --from=$wallet_name --gas=auto --gas-adjustment=1.5 --fees=44659140000000000arapid -y
 }
 
