@@ -6,7 +6,7 @@ read -p "Validator Adresini Girin: " validator_address
 apt install jq -y
 
 function check_jailed {
-  result=$(rapidd query staking validator $validator_address --output json)
+  result=$(dailyd query staking validator $validator_address --output json)
   jailed=$(echo $result | jq -r '.jailed')
   if [[ "$jailed" == "true" ]]; then
     echo "Validator $validator_address JAILED. $jailed"
@@ -18,7 +18,7 @@ function check_jailed {
 
 function unjail_validator {
   echo "unjail..."
-  rapidd tx slashing unjail --broadcast-mode=block --from=$wallet_name --gas=auto --gas-adjustment=1.5 --fees=44659140000000000arapid -y
+  dailyd tx slashing unjail --broadcast-mode=block --from=$wallet_name --gas=auto --gas-adjustment=1.5 --fees=44659140000000000adaily -y
 }
 
 while true; do
